@@ -1,2 +1,2 @@
-export * from './HomeRoutes'
-export * from './GarageRoutes'
+export * from './SchemaRouter'
+export * from './Fastify'
