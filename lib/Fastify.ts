@@ -20,6 +20,14 @@ export class Fastify{
         this.server.register(func, options)
     }
 
+    public close(): void{
+        this.server.close().then(() => {
+            console.log('successfully closed!')
+          }, (err) => {
+            console.log('an error happened', err)
+          })
+    }
+
     public listen(port: number): void{
         this.server.listen(port, err => {
             if(err){
