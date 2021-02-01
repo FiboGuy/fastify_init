@@ -1,1 +1,1 @@
-export * from './Fastify'
+export * from './routes'

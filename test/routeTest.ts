@@ -1,19 +1,12 @@
-import {Fastify} from './../lib'
-import {routerGet, routerPost} from './route/SchemaRouter'
 import axios from 'axios'
 import {assert} from 'chai'
-
-const server = Fastify.getInstance()
-server.register(routerGet, {prefix: '/'})
-server.register(routerPost, {prefix: '/'})
-server.listen(8000)
+import server from './../bin/app'
 
 after(() => {
     server.close()
 })
 
 describe('Testing response get', () => {
-
     it('Testing a get route 400', async () => {
         let result: any
         try{
