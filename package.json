@@ -2,7 +2,7 @@
   "name": "fastify_testing",
   "version": "1.0.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "lib/index.ts",
   "scripts": {
     "start": "tsc && node bin/app.js",
     "build": "tsc",
