@@ -4,7 +4,7 @@ import fastifySwagger from 'fastify-swagger'
 import cors from 'fastify-cors'
 import * as fs from 'fs'
 
-class Server{
+export class Server{
     private server: FastifyInstance
     public constructor(){
         this.server = fastify()
