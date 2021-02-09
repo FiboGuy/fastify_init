@@ -1,4 +1,4 @@
-export class SchemaRoutes{
+export class Routes{
     public static routerGet = (fastify, opts, next): void => {
         fastify.addHook('onRequest', (request, reply, next) => {
             console.log('schema get')

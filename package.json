@@ -4,9 +4,9 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "start": "tsc && node bin/app.js",
     "build": "tsc",
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts'"
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts'",
+    "tag": "git tag v$(node -pe \"require('./package.json')['version']; && git push  --tags"
   },
   "author": "",
   "license": "ISC",

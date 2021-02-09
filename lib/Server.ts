@@ -6,15 +6,15 @@ import * as fs from "fs";
 import {homedir} from 'os'
 
 interface params{
-    env: string,
-    port: 8000
+    env: string | undefined,
+    port: number | undefined
 }
 
 export class Server{
     private server: FastifyInstance
     private params: params = {
-            env: 'dev',
-            port: 8000
+        env: undefined,
+        port: undefined
     }
 
     public constructor(){
@@ -52,10 +52,16 @@ export class Server{
     private getConfig(): void
     {
         const configPath = `${homedir}/.monkey_config.json`
+      
         if(fs.existsSync(configPath)){
             const config: params = JSON.parse(fs.readFileSync(configPath, 'utf-8'))['server']
-            this.params = {port: config.port, env: config.env}
+            if(config){
+                this.params = {port: config?.port, env: config?.env}
+                return
+            } 
         }
+        console.log('No monkey_config json server encountered for fastify options')
+        process.exit(1)
     }
 
     public getServer(): FastifyInstance {
@@ -63,8 +69,9 @@ export class Server{
     }
 
     public listen(): void {
-        this.server.listen(this.params.port, (err) => {
+        this.server.listen(this.params.port as number, (err) => {
         if (err) {
+            console.log('You probably haven\'t submitted server config params in monkey_json file')
             console.log(err);
             process.exit(1);
         }

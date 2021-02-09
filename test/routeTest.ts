@@ -1,9 +1,16 @@
 import axios from 'axios'
 import {assert} from 'chai'
-import server from './../bin/app'
+import {Server} from './../lib'
+import {Routes} from './testingRoutes'
+
+const server = new Server()
+server.register(Routes.routerGet, {prefix: ''})
+server.registerSwagger()
+server.register(Routes.routerPost, {prefix: ''})
+server.listen()
 
 after(() => {
-    server.close()
+    server.getServer().close()
 })
 
 describe('Testing response get', () => {
@@ -56,5 +63,17 @@ describe('Testing response get', () => {
         const data = result.data
         assert.typeOf(data, 'object')
         assert.equal(data.data, 'hey from schema post')
+    })
+})
+
+describe('Testing swagger documentation works', () => {
+    it.only('End point documentation works', async () => {
+        let result: any
+        try{
+            result = await axios.get('http://localhost:8000/documentation')
+        }catch(err){
+            result = err
+        }
+        assert.typeOf(result.data, 'string')
     })
 })
