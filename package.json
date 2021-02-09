@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'test/**/*.ts'",
-    "tag": "git tag v$(node -pe \"require('./package.json')['version']; && git push  --tags"
+    "tag": "git tag v$(node -pe \"require('./package.json')['version'];\") && git push  --tags"
   },
   "author": "",
   "license": "ISC",
