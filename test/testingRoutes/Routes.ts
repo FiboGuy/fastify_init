@@ -59,7 +59,6 @@ export class Routes{
                     },
                 },
                 handler: (req, res) => {
-                    // console.log(req.body)
                     res.send({data: 'hey from schema post'})
                 }
         })

@@ -67,7 +67,7 @@ describe('Testing response get', () => {
 })
 
 describe('Testing swagger documentation works', () => {
-    it.only('End point documentation works', async () => {
+    it('End point documentation works', async () => {
         let result: any
         try{
             result = await axios.get('http://localhost:8000/documentation')
